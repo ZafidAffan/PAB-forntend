@@ -1,15 +1,33 @@
-<h2>Tambah Produk</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tambah Produk</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
 
-<input type="text" id="nama" placeholder="Nama Produk">
-<br><br>
+<div class="container">
 
-<input type="number" id="harga" placeholder="Harga Produk">
-<br><br>
+    <div class="card form-card">
+        <h2>➕ Tambah Produk</h2>
+        <p class="subtitle">Isi data produk dengan benar</p>
 
-<button onclick="saveProduct()">
-Simpan
-</button>
+        <input type="text" id="nama" placeholder="Nama Produk">
+        <input type="number" id="harga" placeholder="Harga Produk">
 
-<p id="message"></p>
+        <button onclick="saveProduct()">Simpan</button>
+
+        <p id="message"></p>
+
+        <div class="switch">
+            <a href="products.html">← Kembali ke daftar produk</a>
+        </div>
+    </div>
+
+</div>
 
 <script src="js/add_product.js"></script>
+</body>
+</html>
