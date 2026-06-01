@@ -1,24 +1,32 @@
-const API_URL = "https://tugas-aplikasi-sederhana-c80gfz3my-zafid-affans-projects.vercel.app/api";
+const API_URL = "https://tugas-aplikasi-sederhana-ba9b6sark.vercel.app/api";
 
-const token = localStorage.getItem("token");
+async function saveProduct() {
+    const nama = document.getElementById("nama").value;
+    const harga = document.getElementById("harga").value;
 
-async function saveProduct(){
-
-    const name = document.getElementById("name").value;
-
-    const response = await fetch(`${API_URL}/products`,{
-        method:"POST",
-        headers:{
-            "Content-Type":"application/json",
-            Authorization:`Bearer ${token}`
+    const response = await fetch(`${API_URL}/products`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
         },
         body: JSON.stringify({
-            name
+            nama,
+            harga
         })
     });
 
-    if(response.ok){
-        alert("Produk berhasil ditambahkan");
-        window.location.href = "products.html";
+    const result = await response.json();
+
+    if (response.ok) {
+        document.getElementById("message").innerText =
+            "Produk berhasil ditambahkan";
+
+        setTimeout(() => {
+            window.location.href = "products.html";
+        }, 1000);
+
+    } else {
+        document.getElementById("message").innerText =
+            result.message;
     }
 }
