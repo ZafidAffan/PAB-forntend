@@ -19,11 +19,10 @@ async function loadProducts() {
 
         const result = await response.json();
 
-        // DEBUG kalau error
         if (!response.ok) {
             console.log(result);
             document.getElementById("productList").innerHTML =
-                `<li>${result.message}</li>`;
+                `<tr><td colspan="3">${result.message}</td></tr>`;
             return;
         }
 
@@ -31,11 +30,13 @@ async function loadProducts() {
 
         let html = "";
 
-        products.forEach((product) => {
+        products.forEach((product, index) => {
             html += `
-                <li>
-                    ${product.nama} - Rp ${product.harga}
-                </li>
+                <tr>
+                    <td>${index + 1}</td>
+                    <td>${product.nama}</td>
+                    <td>Rp ${product.harga}</td>
+                </tr>
             `;
         });
 
