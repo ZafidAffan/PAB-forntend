@@ -4,14 +4,24 @@ async function saveProduct() {
     const nama = document.getElementById("nama").value;
     const harga = document.getElementById("harga").value;
 
+    // 🔥 AMBIL TOKEN
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+        alert("Token tidak ditemukan, silakan login ulang");
+        window.location.href = "login.html";
+        return;
+    }
+
     const response = await fetch(`${API_URL}/products`, {
         method: "POST",
         headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}` // 🔥 INI WAJIB
         },
         body: JSON.stringify({
             nama,
-            harga
+            harga: Number(harga)
         })
     });
 
