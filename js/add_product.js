@@ -1,4 +1,4 @@
-const API_URL = "https://tugas-aplikasi-sederhana-ba9b6sark.vercel.app/api";
+const API_URL = "https://tugas-aplikasi-sederhana-ba9b6sark-zafid-affans-projects.vercel.app/api";
 
 async function saveProduct() {
     const nama = document.getElementById("nama").value;
