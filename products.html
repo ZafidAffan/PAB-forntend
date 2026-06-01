@@ -1,22 +1,37 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daftar Produk</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-<h2>Daftar Produk</h2>
+<div class="container">
 
-<button onclick="window.location='add_product.html'">
-Tambah Produk
-</button>
+    <div class="header">
+        <div>
+            <h2>📦 Daftar Produk</h2>
+            <p class="subtitle">Kelola produk kamu dengan mudah</p>
+        </div>
 
-<button onclick="logout()">
-Logout
-</button>
+        <div class="actions">
+            <button class="btn primary" onclick="window.location='add_product.html'">
+                + Tambah Produk
+            </button>
 
-<ul id="productList"></ul>
+            <button class="btn danger" onclick="logout()">
+                Logout
+            </button>
+        </div>
+    </div>
+
+    <div class="product-grid" id="productList">
+        <!-- product card akan muncul di sini -->
+    </div>
+
+</div>
 
 <script src="js/product.js"></script>
 </body>
