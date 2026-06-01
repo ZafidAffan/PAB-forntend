@@ -1,7 +1,7 @@
 const API_URL = "https://tugas-aplikasi-sederhana-c80gfz3my-zafid-affans-projects.vercel.app/api";
 
 async function register() {
-    const name = document.getElementById("name").value;
+    const name = document.getElementById("username").value;
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
 
@@ -11,7 +11,7 @@ async function register() {
             "Content-Type": "application/json"
         },
         body: JSON.stringify({
-            name,
+            username,
             email,
             password
         })
