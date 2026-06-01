@@ -2,21 +2,37 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-    <h2>Register</h2>
+<div class="container">
 
-    <input type="text" id="username" placeholder="Nama"><br><br>
-    <input type="email" id="email" placeholder="Email"><br><br>
-    <input type="password" id="password" placeholder="Password"><br><br>
+    <div class="card form-card">
 
-    <button onclick="register()">Daftar</button>
+        <h2>📝 Create Account</h2>
+        <p class="subtitle">Daftar untuk mulai menggunakan aplikasi</p>
 
-    <p id="message"></p>
+        <input type="text" id="username" placeholder="Nama">
+        <input type="email" id="email" placeholder="Email">
+        <input type="password" id="password" placeholder="Password">
 
-    <script src="js/register.js"></script>
+        <button onclick="register()">Daftar</button>
+
+        <p id="message"></p>
+
+        <div class="switch">
+            <p>Sudah punya akun?</p>
+            <a href="login.html">Login di sini</a>
+        </div>
+
+    </div>
+
+</div>
+
+<script src="js/register.js"></script>
 
 </body>
 </html>
