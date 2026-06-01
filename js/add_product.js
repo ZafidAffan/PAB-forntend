@@ -3,8 +3,9 @@ const API_URL = "https://tugas-aplikasi-sederhana-8f3uw6cv4-zafid-affans-project
 async function saveProduct() {
     const nama = document.getElementById("nama").value;
     const harga = document.getElementById("harga").value;
+    const message = document.getElementById("message");
+    const loading = document.getElementById("loading");
 
-    // 🔥 AMBIL TOKEN
     const token = localStorage.getItem("token");
 
     if (!token) {
@@ -13,30 +14,43 @@ async function saveProduct() {
         return;
     }
 
-    const response = await fetch(`${API_URL}/products`, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${token}` // 🔥 INI WAJIB
-        },
-        body: JSON.stringify({
-            nama,
-            harga: Number(harga)
-        })
-    });
+    // 🔥 TAMPILKAN LOADING
+    loading.style.display = "flex";
 
-    const result = await response.json();
+    try {
+        const response = await fetch(`${API_URL}/products`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            },
+            body: JSON.stringify({
+                nama,
+                harga: Number(harga)
+            })
+        });
 
-    if (response.ok) {
-        document.getElementById("message").innerText =
-            "Produk berhasil ditambahkan";
+        const result = await response.json();
 
-        setTimeout(() => {
-            window.location.href = "products.html";
-        }, 1000);
+        // 🔥 HILANGKAN LOADING
+        loading.style.display = "none";
 
-    } else {
-        document.getElementById("message").innerText =
-            result.message;
+        if (response.ok) {
+            message.style.color = "green";
+            message.innerText = "Produk berhasil ditambahkan";
+
+            setTimeout(() => {
+                window.location.href = "products.html";
+            }, 1000);
+
+        } else {
+            message.style.color = "red";
+            message.innerText = result.message;
+        }
+
+    } catch (error) {
+        loading.style.display = "none";
+        message.style.color = "red";
+        message.innerText = "Terjadi kesalahan!";
     }
 }
